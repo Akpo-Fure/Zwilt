@@ -1,5 +1,10 @@
+import HeroComponent from "./components/heroSection/HeroComponent";
 function App() {
-  return <div>Welcome</div>;
+  return (
+    <div>
+      <HeroComponent />
+    </div>
+  );
 }
 
 export default App;
