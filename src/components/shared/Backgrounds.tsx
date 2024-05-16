@@ -4,7 +4,8 @@ import colors from "../../constants/colors";
 export const SlantedContainer = styled.div`
   background-color: ${({ color }) => color || colors.black1};
   clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
-  padding: 2em;
+  padding: 9em 0em 0em 0em;
+  height: 100vh;
 `;
 
 // const BehindSlantedContainerTopLeft = styled.div`

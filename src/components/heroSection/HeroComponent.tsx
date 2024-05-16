@@ -2,6 +2,7 @@ import styled from "styled-components";
 import NavBar from "./NavBar";
 import HeroText from "./HeroText";
 import InputComponent from "../shared/Inputs";
+import TabBar from "./TabBar";
 
 const HeroContainer = styled.div`
   flex-direction: column;
@@ -14,6 +15,7 @@ const HeroComponent = () => {
       <NavBar />
       <HeroText />
       <InputComponent />
+      <TabBar />
     </HeroContainer>
   );
 };

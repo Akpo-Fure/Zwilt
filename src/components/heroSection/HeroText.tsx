@@ -12,8 +12,7 @@ const HeroTextContainer = styled.div`
   align-items: center;
 `;
 
-//use word-wrap: break-word; to break the word if it exceeds the container width
-const HeroTextTitle = styled.span`
+export const HeroTextTitle = styled.span`
   font-weight: 700;
   text-align: center;
   font-size: ${fontSizes.xxxxxxxl};
@@ -38,14 +37,14 @@ const HeroTextTitle = styled.span`
   }
 `;
 
-const HeroTextSubtitle = styled.span`
+export const HeroTextSubtitle = styled.span`
   text-align: center;
   font-size: ${fontSizes.xxl};
   color: ${colors.black1};
   line-height: 1.2;
   word-wrap: break-word;
   width: 100%;
-  max-width: 650px;
+  max-width: 690px;
 
   @media ${device.laptop} {
     font-size: ${fontSizes.xl};
