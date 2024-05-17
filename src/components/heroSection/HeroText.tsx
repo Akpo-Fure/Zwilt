@@ -2,6 +2,7 @@ import styled from "styled-components";
 import device from "../../constants/breakpoints";
 import fontSizes from "../../constants/fonts";
 import colors from "../../constants/colors";
+import FitImage from "../../assets/fitImage.png";
 
 const HeroTextContainer = styled.div`
   display: flex;
@@ -19,7 +20,7 @@ export const HeroTextTitle = styled.span`
   word-wrap: break-word;
   width: 100%;
   max-width: 800px;
-  color: ${colors.black1};
+  color: ${({ color }) => color || colors.black1};
   line-height: 1;
   @media ${device.laptop} {
     font-size: ${fontSizes.xxxxxxl};
@@ -40,10 +41,11 @@ export const HeroTextTitle = styled.span`
 export const HeroTextSubtitle = styled.span`
   text-align: center;
   font-size: ${fontSizes.xxl};
-  color: ${colors.black1};
+  color: ${({ color }) => color || colors.black1};
   line-height: 1.2;
   word-wrap: break-word;
   width: 100%;
+  //add props ro max-width
   max-width: 690px;
 
   @media ${device.laptop} {
@@ -57,11 +59,27 @@ export const HeroTextSubtitle = styled.span`
   }
 `;
 
+const Image = styled.img`
+  width: 75px;
+  height: 45px;
+  margin: 0px;
+  @media ${device.tablet} {
+    width: 50px;
+    height: 30px;
+  }
+`;
+
 const HeroText = () => {
   return (
     <HeroTextContainer>
-      <HeroTextTitle>
-        Finding the right fit has never been easier.
+      <HeroTextTitle
+        style={{
+          maxWidth: "100%",
+          width: "100%",
+        }}
+      >
+        Finding the right fit <Image src={FitImage} alt="fit" /> has
+        <br /> never been easier.
       </HeroTextTitle>
       <HeroTextSubtitle
         style={{

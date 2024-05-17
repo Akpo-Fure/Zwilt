@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import device from "../../constants/breakpoints";
 import fontSizes from "../../constants/fonts";
 import colors from "../../constants/colors";
+import useResponsive from "../../hooks/useResponsive";
 
 const TabContainer = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const TabBarWrapper = styled.div`
   gap: 1em;
   padding: 1em;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
 `;
 
 const Tabs = styled.div`
@@ -34,10 +35,19 @@ const Tabs = styled.div`
 const TabGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em 5em;
+  gap: 1em 12em;
+
+  @media ${device.laptop} {
+    gap: 1em 7em;
+  }
 
   @media ${device.tablet} {
     gap: 1em 3em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.mobile} {
+    gap: 1em 1em;
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -47,13 +57,12 @@ const TabData = styled.div`
   cursor: pointer;
 
   &:hover {
+    font-weight: 500;
     color: ${colors.black1};
   }
 `;
 
 const TabBar = () => {
-  const tabs = ["IT & Development", "Design and Creative"];
-
   const ITData = [
     "Python Developer",
     "Shopify Developer",
@@ -84,43 +93,46 @@ const TabBar = () => {
     "Explore More",
   ];
 
+  const theTabs = [
+    { name: "IT & Development", data: ITData },
+    { name: "Design and Creative", data: DesignData },
+  ];
+
   const [activeTab, setActiveTab] = useState("IT & Development");
-  const [activeData, setActiveData] = useState(ITData);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
-    if (tab === "IT & Development") {
-      setActiveData(ITData);
-    } else if (tab === "Design and Creative") {
-      setActiveData(DesignData);
-    }
   };
+
+  const { isMobile } = useResponsive();
 
   return (
     <TabContainer>
       <TabBarWrapper>
         <Tabs>
-          {tabs.map((tab) => (
+          {theTabs.map((tab) => (
             <div
-              key={tab}
+              key={tab.name}
               style={{
                 color: colors.black1,
-                backgroundColor: activeTab === tab ? colors.green1 : "",
-                fontWeight: activeTab === tab ? "600" : "500",
-                padding: "0.75em 1.5em",
+                backgroundColor: activeTab === tab.name ? colors.green1 : "",
+                fontWeight: activeTab === tab.name ? "600" : "500",
+                padding: isMobile ? "0.75em 1em" : "0.75em 1.5em",
                 borderRadius: "15px",
                 cursor: "pointer",
               }}
-              onClick={() => handleTabChange(tab)}
+              onClick={() => handleTabChange(tab.name)}
             >
-              {tab}
+              {tab.name}
             </div>
           ))}
         </Tabs>
         <TabGrid>
-          {activeData.map((data) => (
-            <TabData key={data}>{data}</TabData>
-          ))}
+          {theTabs.map(
+            (tab) =>
+              tab.name === activeTab &&
+              tab.data.map((data) => <TabData key={data}>{data}</TabData>)
+          )}
         </TabGrid>
       </TabBarWrapper>
     </TabContainer>

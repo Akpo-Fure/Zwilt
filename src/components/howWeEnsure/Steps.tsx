@@ -80,7 +80,7 @@ const EnsureSteps = () => {
     {
       title: "Let's get to work",
       description:
-        "Once the screening, interviewing, and evaluation processes are complete, we provide you with a curated list of the best candidates to choose from. These candidates have successfully passed our rigorous selection criteria and are well-suited for the job based on their skills, experience, and fit with your organization's culture. With our assistance, you can confidently move forward with hiring the right candidate for the position, allowing you to focus on achieving your business objectives.",
+        "Once the screening, interviewing, and evaluation processes are complete, we provide you with a curated list of the best candidates to choose from. These candidates have successfully passed our rigorous selection criteria and are well-suited for the job based on their skills, experience, and fit with your organization's culture",
     },
   ];
 
